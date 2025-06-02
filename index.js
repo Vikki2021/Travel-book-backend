@@ -23,12 +23,11 @@ mongoose
 
 const app = express()
 
-// Enable CORS for frontend (Replace with your frontend URL)
 app.use(
   cors({
     origin: "https://travel-book-frontend.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow CRUD operations
-    credentials: true, // Allow cookies & authorization headers
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
   })
 );
 
