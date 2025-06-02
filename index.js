@@ -41,6 +41,10 @@ app.listen(3000, () => {
   console.log("Server is running on port 3000!")
 })
 
+app.get("/",(req,res)=> {
+  res.send("server is working");
+})
+
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
 app.use("/api/travel-story", travelStoryRoutes)
