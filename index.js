@@ -26,7 +26,10 @@ const app = express()
 // Enable CORS for frontend (Replace with your frontend URL)
 app.use(
   cors({
-    origin: "https://travel-book-frontend.vercel.app",
+    origin: [
+      "https://travel-book-frontend.vercel.app/login",
+      "https://travel-book-frontend.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow CRUD operations
     credentials: true, // Allow cookies & authorization headers
   })
@@ -36,6 +39,7 @@ app.use(cookieParser())
 
 // for allowing json object in req body
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000!")
