@@ -58,7 +58,7 @@ export const imageUpload = async (req, res, next) => {
       return next(errorHandler(400, "No image uploaded"))
     }
 
-    const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`
+    const imageUrl = `https://travel-book-frontend.vercel.app/uploads/${req.file.filename}`;
 
     res.status(201).json({ imageUrl })
   } catch (error) {
@@ -121,7 +121,7 @@ export const editTravelStory = async (req, res, next) => {
       next(errorHandler(404, "Travel Story not found!"))
     }
 
-    const placeholderImageUrl = `http://localhost:3000/assets/placeholderImage.png`
+    const placeholderImageUrl = `https://travel-book-frontend.vercel.app/assets/placeholderImage.png`;
 
     travelStory.title = title
     travelStory.story = story
@@ -155,7 +155,7 @@ export const deleteTravelStory = async (req, res, next) => {
     await travelStory.deleteOne({ _id: id, userId: userId })
 
     // Check if the image is not a placeholder before deleting
-    const placeholderImageUrl = `http://localhost:3000/assets/placeholderImage.png`
+    const placeholderImageUrl = `https://travel-book-frontend.vercel.app/assets/placeholderImage.png`;
 
     // Extract the filename from the imageUrl
     const imageUrl = travelStory.imageUrl

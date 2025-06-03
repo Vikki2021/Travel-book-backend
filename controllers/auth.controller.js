@@ -26,7 +26,6 @@ export const signup = async (req, res, next) => {
   }
 
   // 3. IMPORTANT: Check if a user with the same username already exists
-  // This is the crucial step to prevent the E11000 error for usernames.
   const existingUserByUsername = await User.findOne({ username });
   if (existingUserByUsername) {
     return next(
@@ -49,12 +48,10 @@ export const signup = async (req, res, next) => {
 
   try {
     // 6. Save the new user to the database
-    // This will now only be attempted if both email and username are unique.
     await newUser.save();
 
     res.json("Signup successful");
   } catch (error) {
-    // If any other database error occurs (e.g., network issues), it's caught here.
     next(error);
   }
 };
